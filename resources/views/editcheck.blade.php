@@ -27,7 +27,10 @@
             </div>
         @endif
 
-                	<form method="POST" action="{{ url('/') }}/checkPage"><!--start form-->
+                	<form method="POST" action="/checkPage/{{$checks->id}} ">
+
+
+                		 @method('PATCH')<!--start form-->
                 		{{csrf_field()}}
 
 
@@ -46,9 +49,21 @@
 						     		<div class="form-group">
 								    	<label for="">Product</label>
 								      <select class="form-control form-control-lg" name="newcheck_product_name" select="{{ $checks->check_product }}">
+								      	if($checks->check_product){
+								      	echo <option>{{ $checks->check_product }}</option>
+
+								      }
+								      else{
 								      	@foreach ($allSkus as $sku)
 								      	<option>{{$sku->Code}}</option>
 								      	@endforeach
+								      };
+
+
+
+
+								      	
+
 								      </select>
 									</div>
 
@@ -207,7 +222,7 @@
   <div class="input-group-prepend">
     <span class="input-group-text">Comments</span>
   </div>
-  <textarea class="form-control" aria-label="With textarea" name="newcheck_comments" value="{{$checks->check_comments}}"></textarea>
+  <textarea class="form-control" aria-label="With textarea" name="newcheck_comments" value="{{$checks->check_comments}}">{{$checks->check_comments}}</textarea>
 </div>
 
 <hr />

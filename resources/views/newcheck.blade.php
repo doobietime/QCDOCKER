@@ -42,9 +42,16 @@
 						     		<div class="form-group">
 								    	<label for="">Product</label>
 								      <select class="form-control form-control-lg" name="newcheck_product_name" select="{{ old('newcheck_product_name') }}">
-								      	@foreach ($allSkus as $sku)
+								      	if({{ old('newcheck_product_name') }}){
+								      	<option>{{ old('newcheck_product_name') }}</option>
+								      }
+								      else{
+								      @foreach ($allSkus as $sku)
 								      	<option>{{$sku->Code}}</option>
 								      	@endforeach
+
+								  };
+								      	
 								      </select>
 									</div>
 

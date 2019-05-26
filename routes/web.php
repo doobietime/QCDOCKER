@@ -46,3 +46,4 @@ Route::resource('/checkPage', 'checkController');
 Route::resource('/newCheck', 'checkController');
 Route::resource('/edit', 'checkController');
 
+
