@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dev01','AdminController@testDashboard');
-Route::patch('/dev01_save','AdminController@saveTestDashboard')->name('somalysku.store');
+Route::get('/dev01','adminController@testDashboard');
+Route::patch('/dev01_save','adminController@saveTestDashboard')->name('somalysku.store');
 
 //somalycheck routes
 
@@ -81,13 +81,13 @@ Route::get('/edit', function(){
 
  Route::get('ajaxRequest_getBatches', 'IGCheckController@ajaxRequest_getBatches');
 
- Route::get('ajaxRequest_getParameters', 'AdminController@getSKUParameters');
- Route::get('/getSkuFromAX', 'AdminController@getSkuFromAX');
+ Route::get('ajaxRequest_getParameters', 'adminController@getSKUParameters');
+ Route::get('/getSkuFromAX', 'adminController@getSkuFromAX');
 
 
  Route::get('ajaxRequest_getSomalySkus','SomalyCheckController@getSkuAdmin');
 
- Route::post('ajaxRequest_removeParamLine', 'AdminController@removeParam');
+ Route::post('ajaxRequest_removeParamLine', 'adminController@removeParam');
 
  Route::post('/admin_inwards_save/{id}', 'adminController@saveSpecifications')->name('admin_inwards.save');
  Route::post('setGlobalParam', 'adminController@saveGlobalParam');
