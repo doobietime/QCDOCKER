@@ -363,7 +363,7 @@ return redirect()->action(
         $fnotes = $igchecks->notes()->value('note_body');
 
 
-         return view('IGCheck/review_IGCheck',compact('igchecks','parameters','getBatch','param_lines','rmcode','param_lines_RMS','getVersion','getSpecVersion','batches','getSoa','getNewSoa','notes','eURL','fnotes','eURLdoc'));
+         return view('IGCheck/review_IGCheck',compact('igchecks','parameters','getBatch','param_lines','rmcode','param_lines_RMS','getVersion','getSpecVersion','batches','getNewSoa','notes','eURL','fnotes','eURLdoc'));
    
     }
 
