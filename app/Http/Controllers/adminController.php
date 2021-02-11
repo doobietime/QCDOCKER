@@ -20,6 +20,15 @@ class adminController extends Controller
    
        return view('admin/admin_inwards', compact('rms','documentVersion'));
     }
+    
+    public function ccpchecks()
+    {
+        $skus = \App\Sku::all();
+
+        
+
+        return view('CCP/ccp',compact('skus'));
+    }
 
     public function testDashboard()
     {

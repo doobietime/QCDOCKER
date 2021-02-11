@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dev02', function(){
-	return view('CCP/ccp');
-});
+// Route::get('/dev02', function(){
+// 	return view('CCP/ccp');
+// });
+
+Route::get('/dev02','adminController@ccpchecks');
 
 Route::get('/dev01','adminController@testDashboard');
 Route::patch('/dev01_save','adminController@saveTestDashboard')->name('somalysku.store');
