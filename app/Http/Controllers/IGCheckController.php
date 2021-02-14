@@ -471,7 +471,7 @@ return redirect()->action(
 
          $selected_sku = $request->p_selected;
          // $rm_id = \App\Sku::where('Code',$selected_sku)->value('id');
-         $parameters = \App\parameters::where('RM_id', $selected_sku)->get();
+         $parameters = \App\Parameters::where('RM_id', $selected_sku)->get();
          $global_params = \App\Parameters::where('RM_code','global_param')->get();
 
         $skus = \App\Sku::find($id); 
