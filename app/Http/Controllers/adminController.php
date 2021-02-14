@@ -24,10 +24,39 @@ class adminController extends Controller
     public function ccpchecks()
     {
         $skus = \App\Sku::all();
-
-        
-
         return view('CCP/ccp',compact('skus'));
+
+    }
+    public function saveCcp(Request $request)
+    {
+        $data = $request->all();
+        $user = \Auth::user()->name;
+        //CREATE CCP CHECK
+        $newccp = \App\ccpChecks::create([
+            'created_by' => $user,
+            'sku' => $request->selected_sku
+        ]);
+
+        //CREATE CCP CHECK LINES
+        $doobies = $request->ris;
+        if($doobies){
+           foreach($doobies as $doobie => $doobies)
+           {
+           \App\ccpChecks_lines::create([
+           'ccpID' => $newccp->idccpChecks,
+           'test_piece' => $data['tpiece'][$doobie],
+           'result' => $data['ris'][$doobie],
+           'comments' => $data['coms'][$doobie]
+       ]);
+
+           }
+       
+        }
+
+
+
+        //RETURN BACK
+       return redirect()->back();
     }
 
     public function testDashboard()

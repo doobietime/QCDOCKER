@@ -128,6 +128,26 @@ class SomalyCheckController extends Controller
             return $error;
 
         }
+        if($request->checktype == "CCP")
+        {
+            $id = $request->id;
+            $getUser = \Auth::user()->name;
+            $record = \App\ccpChecks::find($id);
+
+            if($record->created_by == $getUser)
+            {
+            $error = "1";
+            return $error;
+            }
+
+            $error = "0";
+            $record->status = $request->status;
+            $record->verified_by = $getUser;
+            $record->save();
+
+            return $error;
+
+        }
 
 
 
@@ -202,6 +222,12 @@ class SomalyCheckController extends Controller
            $results = \App\syrups_lines::orderby('created_at','DESC')
             ->paginate(15);
          return view('SomalyChecks/somalychecks_report_syrup',compact('contentType','results'));
+        }
+
+        if($contentType == "CCP"){
+            $results = \App\ccpChecks::orderby('created_at','DESC')
+            ->paginate(15);
+            return view('reports/ccpReport', compact('contentType','results'));
         }
       
 

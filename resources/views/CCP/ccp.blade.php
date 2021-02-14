@@ -7,25 +7,25 @@
 
 	<h3>Critical Control Point Check</h3>
 
-		<form class="form" id="ccpform">
+		<form method="POST" class="form" id="ccpform" enctype="multipart/form-data" action="{!! route('ccp.store')!!}">	{{csrf_field()}}>
 			
 			
 
-			<label>Date & Time</label>
+			<label>Date & Time *THIS WILL AUTOFILL WHEN USER SUBMITS</label>
 
 			<div class="form-group">
-		    <label for="exampleInputEmail1">Select line  </label>
-		    <select class="form-control">
-				<option>Carton M.D - Line 1</option>
-				<option>Carton M.D - Line 2</option>
-				<option>Online Cookie</option>
-				<option>Online Bar</option>
-				<option>X4 - X-Ray</option>
+		    <label for="lineselect">Select line</label>
+		    <select name="selected_line" id="lineselect" class="form-control">
+				<option value="Carton M.D - Line 1">Carton M.D - Line 1</option>
+				<option value="Carton M.D - Line 2">Carton M.D - Line 2</option>
+				<option value="Online Cookie">Online Cookie</option>
+				<option value="Online Bar">Online Bar</option>
+				<option value="X4 - X-Ray">X4 - X-Ray</option>
 			</select>
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleInputPassword1">Product</label>
-		    <select class="form-control" id="boxe">
+		    <label for="abcd">Product</label>
+		    <select name="selected_sku" class="form-control" id="boxe">
             @foreach($skus as $sku)
            <option val={{$sku->Code}}>{{$sku->Code}} - {{$sku->Description}}</option>
             @endforeach
@@ -47,17 +47,17 @@
 
                     
                     <tr>
-                    <td>2.0 Fe</td>
+                    <td><input class="form-control" name="tpiece[]" value="2.0 Fe"></td>
                     <td><input readonly name="ris[]" class="asdf btn btn-primary form-control"  aria-pressed="false" autocomplete="off" value="No"></input></td>
                     <td><input required value="" name="coms[]" type="text" class="form-control com"></td>
                     </tr>
                     <tr>
-                    <td>2.5 NFe</td>
+                    <td><input class="form-control" name="tpiece[]" value="2.5 NFe"></td>
                     <td><input readonly name="ris[]" class="asdf btn btn-primary form-control"  aria-pressed="false" autocomplete="off" value="No"></input></td>
                     <td><input required value="" name="coms[]" type="text" class="form-control com"></td>
                     </tr>
                     <tr>
-                    <td>3.0 S/S</td>
+                    <td><input class="form-control" name="tpiece[]" value="3.0 S/S"></td>
                     <td><input readonly name="ris[]" class="asdf btn btn-primary form-control"  aria-pressed="false" autocomplete="off" value="No"></input></td>
                     <td><input required value="" name="coms[]" type="text" class="form-control com"></td>
                     </tr>

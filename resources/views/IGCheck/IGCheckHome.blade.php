@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
+
+<h3><strong>Inwards Goods</strong></h3>
+
+<hr />
+
   <nav class="nav nav-pills flex-column flex-sm-row">
 
   <a class="flex-sm-fill text-sm-center nav-link my-auto active mr-3" href=" {{url('IGCheck/create')}}">New Check</a>

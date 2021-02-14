@@ -78,7 +78,7 @@
                               </li>
                         <li class="nav-item ">
      
-                             <li class="nav-item dropdown">
+                             <!-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                    Process Checks   
                                 </a>
@@ -87,19 +87,22 @@
                                   <a class="dropdown-item" href="{{ url('mixing/create') }}">Mixing Check</a>
                                   <a class="dropdown-item " href="{{ url('weighup/create') }}">Weigh-up Check</a>
                                   <a class="dropdown-item " href="{{ url('oven/create') }}">Oven Check</a>
-                                  <!-- <a class="dropdown-item " href="{{ url('IGCheck/create') }}">Inward Goods Check</a> -->
+                                   <a class="dropdown-item " href="{{ url('IGCheck/create') }}">Inward Goods Check</a>
                                 </div>
-                              </li>
+                              </li> -->
 
+                              <li class="nav-item ">
+                                  <a class="nav-link" href="{{url('/processmenu')}}"><strong>Process Checks</strong></a>
+                                </li>
                               
-                               <li class="nav-item dropdown">
-                                  <a class="nav-link" href="{{url('/somalycheck')}}">QC Checks</a>
+                               <li class="nav-item ">
+                                  <a class="nav-link" href="{{url('/somalycheck')}}"><strong>QC Checks</strong></a>
                                 </li>
 
                    
 
                     <li class="nav-item dropdown">
-                                  <a class="nav-link" href=" {{route ('IGCheck.index')}} ">Inwards Goods</a>
+                                  <a class="nav-link" href=" {{route ('IGCheck.index')}} "><strong>Inwards Goods</strong></a>
                                 </li>
                                   <!--  <li class="nav-item dropdown">
                                   <a  class="nav-link disabled" href="# ">QC Checks</a>
@@ -123,8 +126,8 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                           <strong>   {{ Auth::user()->name }} </strong><span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -141,14 +144,14 @@
                             </li>
                           
 
-                                <li class="nav-item dropdown">
+                         <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                   Admin
+                                <strong>  Admin</strong>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                   <a class="dropdown-item" href="{{  url('/adminpage')  }}">New SKU</a>
                                   <a class="dropdown-item" href="{{ url('/admin_inwards') }}">Inwards Goods</a>
-
+                                  
                                 </div>
                               </li>
 

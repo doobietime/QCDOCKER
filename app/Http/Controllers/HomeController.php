@@ -78,13 +78,15 @@ class HomeController extends Controller
         $scaleCount = \App\scale_calibration::whereNull('verified_status')->count();
         $syrupCount = \App\syrups_lines::whereNull('verified_status')->count();
 
+        $ccpCount = \App\ccpChecks::whereNull('status')->count();
 
 
 
 
 
 
-        return view('home', [ 'sycount' => $syrupCount, 'tcount'=> $toyoCount, 'vcount'=> $vfCount, 'cavcount'=> $cavCount, 'watercount'=> $waterCount, 'scount'=> $scaleCount, 'allChecks' => $checks, 'allMixing' => $mixing, 'Oven' => $ovens, 'Weighups' =>$weighups,'ccount'=> $checksCount, 'mcount'=> $mixnv,'ocount'=> $ovennv,'wcount'=> $wunv ]);
+
+        return view('home', [ 'ccpcount' => $ccpCount,'sycount' => $syrupCount, 'tcount'=> $toyoCount, 'vcount'=> $vfCount, 'cavcount'=> $cavCount, 'watercount'=> $waterCount, 'scount'=> $scaleCount, 'allChecks' => $checks, 'allMixing' => $mixing, 'Oven' => $ovens, 'Weighups' =>$weighups,'ccount'=> $checksCount, 'mcount'=> $mixnv,'ocount'=> $ovennv,'wcount'=> $wunv ]);
 
 
     }
