@@ -22,6 +22,8 @@ Route::get('/processmenu', function () {
 Route::get('/dev02','adminController@ccpchecks');
 Route::post('/dev02_create','adminController@saveCcp')->name('ccp.store');
 
+Route::get('ajaxRequest_getTestPieces', 'adminController@getTestPieces');
+
 Route::get('/dev01','adminController@testDashboard');
 Route::patch('/dev01_save','adminController@saveTestDashboard')->name('somalysku.store');
 

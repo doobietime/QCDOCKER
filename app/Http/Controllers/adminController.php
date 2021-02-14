@@ -23,7 +23,7 @@ class adminController extends Controller
     
     public function ccpchecks()
     {
-        $skus = \App\Sku::all();
+        $skus = \App\Sku::where('product_type','Cookie')->get();
         return view('CCP/ccp',compact('skus'));
 
     }
@@ -57,6 +57,15 @@ class adminController extends Controller
 
         //RETURN BACK
        return redirect()->back();
+    }
+
+    public function getTestPieces(Request $request)
+    {
+        $machine = $request->p_selected;
+        $query = \App\keyValues::where('machineName',$machine)->get();
+
+        return $query;
+
     }
 
     public function testDashboard()

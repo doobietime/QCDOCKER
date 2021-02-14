@@ -11,6 +11,10 @@ class keyValues extends Model
    		'machineName',
 		'valueName',
 		'value',
+		'value1',
+		'value2',
+		'value3',
+		'value4',
 		'updated_at',
 		'created_at'
 		

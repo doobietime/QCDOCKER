@@ -16,11 +16,12 @@
 			<div class="form-group">
 		    <label for="lineselect">Select line</label>
 		    <select name="selected_line" id="lineselect" class="form-control">
-				<option value="Carton M.D - Line 1">Carton M.D - Line 1</option>
-				<option value="Carton M.D - Line 2">Carton M.D - Line 2</option>
-				<option value="Online Cookie">Online Cookie</option>
-				<option value="Online Bar">Online Bar</option>
-				<option value="X4 - X-Ray">X4 - X-Ray</option>
+                <option>Select Line...</option>
+				<option value="MD">Carton M.D - Line 1</option>
+				<option value="MD">Carton M.D - Line 2</option>
+				<option value="OC">Online Cookie</option>
+				<option value="OB">Online Bar</option>
+				<option value="X4">X4 - X-Ray</option>
 			</select>
 		  </div>
 		  <div class="form-group">
@@ -47,17 +48,17 @@
 
                     
                     <tr>
-                    <td><input class="form-control" name="tpiece[]" value="2.0 Fe"></td>
+                    <td><input id="t1" class="form-control tp" name="tpiece[]" ></td>
                     <td><input readonly name="ris[]" class="asdf btn btn-primary form-control"  aria-pressed="false" autocomplete="off" value="No"></input></td>
                     <td><input required value="" name="coms[]" type="text" class="form-control com"></td>
                     </tr>
                     <tr>
-                    <td><input class="form-control" name="tpiece[]" value="2.5 NFe"></td>
+                    <td><input  id="t2" class="form-control tp" name="tpiece[]" ></td>
                     <td><input readonly name="ris[]" class="asdf btn btn-primary form-control"  aria-pressed="false" autocomplete="off" value="No"></input></td>
                     <td><input required value="" name="coms[]" type="text" class="form-control com"></td>
                     </tr>
                     <tr>
-                    <td><input class="form-control" name="tpiece[]" value="3.0 S/S"></td>
+                    <td><input  id="t3" class="form-control tp" name="tpiece[]" ></td>
                     <td><input readonly name="ris[]" class="asdf btn btn-primary form-control"  aria-pressed="false" autocomplete="off" value="No"></input></td>
                     <td><input required value="" name="coms[]" type="text" class="form-control com"></td>
                     </tr>
@@ -81,7 +82,6 @@
 <script>
 
 $( document ).ready(function() {
-
 
 $(".asdf").addClass("btn-danger active");
 });
@@ -110,29 +110,43 @@ $(document).ready(function() {
     $('#boxe').select2();
 });
 
-// $("#ccpform").on("submit", function(){
-//     event.preventDefault(); 
-//     $('.asdf').each(function(){
+$('#lineselect').on('change', function (e){
+      var x = $('option:selected',this).val();
 
-//         if( $(this).val() == "No")
-//         {
-//             // $(this).closest('td').next('td').find('input[name="coms[]"]').prop('required',true);
-            
-//         }
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+   
+        $.ajax({
+           type:'GET',
+           url:'/ajaxRequest_getTestPieces',
+           data:{
+           p_selected: x
+           },
+           success:function(data){
 
-//         console.log( $(this).closest('td').next('td').find('input[name="coms[]"]').val() );
-//     })
+             $(".tp").val('');
 
- 
-//     // if ( $('.asdf').val() == "No" )
-//     // {
-//     //    // $(this).closest('input').prop("required", true);
-//     //    event.preventDefault(); 
-//     //    console.log( $(this).closest('input').val() );
+            var v1 = data[0].value;
+            var v2 = data[0].value1;
+            var v3 = data[0].value2;
 
-//     // } 
+            $("#t1").val(v1);
+            $("#t2").val(v2);
+            $("#t3").val(v3);
 
-// });
+
+          
+
+           
+           }
+        });
+
+    });
+
+
 </script>
 
 @endsection
