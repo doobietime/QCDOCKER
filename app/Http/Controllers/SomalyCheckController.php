@@ -12,6 +12,11 @@ use App\Rules\water_activity_rule;
 
 class SomalyCheckController extends Controller
 {
+
+    public function __construct(){
+        // $this->middleware('auth');
+        $this->middleware(['auth', 'verified']);
+        }
     /**
      * Display a listing of the resource.
      *
