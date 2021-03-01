@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">Inwards Goods Inspection</div>
+                <div class="card-header">Inwards Goods Inspections</div>
 
                 <div class="card-body shadow-sm">
                     @if (session('status'))
