@@ -141,7 +141,7 @@ class adminController extends Controller
 
          $selected_sku = $request->p_selected;
          // $rm_id = \App\Sku::where('Code',$selected_sku)->value('id');
-         $parameters = \App\parameters::where('RM_id', $selected_sku)->get();
+         $parameters = \App\Parameters::where('RM_id', $selected_sku)->get();
 
          $version = \App\rmversions::where('RM_id', $selected_sku)->first();
 
