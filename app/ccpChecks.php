@@ -16,7 +16,8 @@ class ccpChecks extends Model
 		'created_by',
 		'verified_by',
         'status',
-        'sku'
+        'sku',
+        'line'
 
 
     ];

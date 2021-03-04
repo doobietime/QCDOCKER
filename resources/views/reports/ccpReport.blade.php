@@ -24,6 +24,7 @@
 	<thead class="thead-light">
 		<tr >
 			<th>Created At</th>
+      <th>Line</th>
 			<th>SKU</th>
 			<th>Done By</th>
 			<th>Status</th>
@@ -36,6 +37,7 @@
 
 		<tr>
 			<td>{{$result->created_at}}</td>
+      <td>{{$result->line}}</td>
 			<td>{{$result->sku}}</td>
 			<td>{{$result->created_by}}</td>
 

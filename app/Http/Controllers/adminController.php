@@ -39,7 +39,8 @@ class adminController extends Controller
         //CREATE CCP CHECK
         $newccp = \App\ccpChecks::create([
             'created_by' => $user,
-            'sku' => $request->selected_sku
+            'sku' => $request->selected_sku,
+            'line' => $request->selected_line
         ]);
 
         //CREATE CCP CHECK LINES
