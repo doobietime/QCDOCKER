@@ -17,7 +17,8 @@ class ccpChecks extends Model
 		'verified_by',
         'status',
         'sku',
-        'line'
+        'line',
+        'veri_comments'
 
 
     ];

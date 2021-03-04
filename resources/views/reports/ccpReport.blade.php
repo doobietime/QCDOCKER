@@ -42,7 +42,13 @@
 			<td>{{$result->created_by}}</td>
 
 			@if($result->status)
-			<td style="cursor: pointer; text-align: center; vertical-align: baseline"><span style="vertical-align: middle" class='badge badge-success'>Verified</span></td>
+			<td style="cursor: pointer; text-align: center; vertical-align: baseline">
+      <span style="vertical-align: middle" class='badge badge-success'>Verified</span>
+      @if($result->veri_comments)
+      <span style="vertical-align: middle" class='badge badge-warning'>{{$result->veri_comments}}</span>
+      @endif
+      </td>
+      
 			@else
 			<td id="{{$result->idccpChecks}}" style="cursor: pointer; text-align: center; vertical-align: baseline"><span style="vertical-align: middle" class='badge badge-danger update'>Verify</span></td>
 			@endif

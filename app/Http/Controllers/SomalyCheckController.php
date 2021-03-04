@@ -148,6 +148,7 @@ class SomalyCheckController extends Controller
             $error = "0";
             $record->status = $request->status;
             $record->verified_by = $getUser;
+            $record->veri_comments = $request->comments;
             $record->save();
 
             return $error;
