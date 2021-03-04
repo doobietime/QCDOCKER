@@ -17,8 +17,8 @@
 		    <label for="lineselect">Select line</label>
 		    <select name="selected_line" id="lineselect" class="form-control">
                 <option>Select Line...</option>
-				<option value="MD">Carton M.D - Line 1</option>
-				<option value="MD">Carton M.D - Line 2</option>
+				<option value="MD1">Carton M.D - Line 1</option>
+				<option value="MD2">Carton M.D - Line 2</option>
 				<option value="OC">Online Cookie</option>
 				<option value="OB">Online Bar</option>
 				<option value="X4">X4 - X-Ray</option>
