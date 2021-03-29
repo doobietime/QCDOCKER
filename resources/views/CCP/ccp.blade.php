@@ -7,15 +7,19 @@
 
 	<h3>Critical Control Point Check</h3>
 
-		<form method="POST" class="form" id="ccpform" enctype="multipart/form-data" action="{!! route('ccp.store')!!}">	{{csrf_field()}}>
-			
+
+<hr />
+
+		<form method="POST" class="form" id="ccpform" enctype="multipart/form-data" action="{!! route('ccp.store')!!}">	{{csrf_field()}}
 			
 
-			<label>Date & Time *THIS WILL AUTOFILL WHEN USER SUBMITS</label>
 
-			<div class="form-group">
+
+			<!-- <label>Date & Time *THIS WILL AUTOFILL WHEN USER SUBMITS</label> -->
+
+			<div class="form-groups">
 		    <label for="lineselect">Select line</label>
-		    <select name="selected_line" id="lineselect" class="form-control">
+		    <select required name="selected_line" id="lineselect" class="form-control">
                 <option>Select Line...</option>
 				<option value="MD1">Carton M.D - Line 1</option>
 				<option value="MD2">Carton M.D - Line 2</option>
@@ -24,6 +28,15 @@
 				<option value="X4">X4 - X-Ray</option>
 			</select>
 		  </div>
+
+<!--BLANK ENTRY-->
+          <div class="form-check form-switch pt-3 pb-3">
+  <input class="form-check-input" type="checkbox" id="blankTick" >
+  <label class="form-check-label" for="flexSwitchCheckChecked">Blank Entry</label>
+  <input id="blankComment" required value="" name="blankComment" type="text" class="form-control com">
+</div>
+
+
 		  <div class="form-group">
 		    <label for="abcd">Product</label>
 		    <select name="selected_sku" class="form-control" id="boxe">
@@ -107,7 +120,31 @@ $(".asdf").click(function(){
 })
 
 $(document).ready(function() {
+
     $('#boxe').select2();
+    $("#blankComment").hide();
+    $("#blankComment").prop("disabled",true);
+
+    $('input[type="checkbox"]').click(function(){
+        if ($('#blankTick').is(':checked')) {
+
+        console.log('blank ticked');
+        $("#ccpform .form-group :input").prop("disabled", true);
+        $("#ccpform .form-group :input").hide();
+        $("#blankComment").show();
+        $("#blankComment").prop("disabled",false);
+    }
+    else{
+        $("#ccpform :input").prop("disabled", false);
+        $("#ccpform .form-group :input").show();
+        $("#blankComment").hide();
+        $("#blankComment").prop("disabled",true);
+    }
+    })
+
+    
+
+
 });
 
 $('#lineselect').on('change', function (e){

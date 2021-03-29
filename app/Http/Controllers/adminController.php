@@ -35,11 +35,30 @@ class adminController extends Controller
     public function saveCcp(Request $request)
     {
         $data = $request->all();
+ 
+        if($request->blankComment)
+        {
+        $skew = "Blank Entry";
         $user = \Auth::user()->name;
         //CREATE CCP CHECK
         $newccp = \App\ccpChecks::create([
             'created_by' => $user,
-            'sku' => $request->selected_sku,
+            'sku' => $request->blankComment,
+            'line' => $request->selected_line
+        ]);
+
+        }
+
+
+        if(!$request->blankComment)
+        { 
+        $skew = $request->selected_sku;
+        
+        $user = \Auth::user()->name;
+        //CREATE CCP CHECK
+        $newccp = \App\ccpChecks::create([
+            'created_by' => $user,
+            'sku' => $skew,
             'line' => $request->selected_line
         ]);
 
@@ -58,6 +77,10 @@ class adminController extends Controller
            }
        
         }
+        }
+
+
+
 
 
 
