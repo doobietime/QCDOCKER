@@ -44,10 +44,10 @@
 		<!--Row 3-->
 	<div class="row pb-5 pt-5">
 		<div class="col-lg-3">
-			<a href="{{ route('water.form')}}"><button  class="btn btn-primary btn-block" ><h3>Water Activity</h3></button></a>
+			<a href="{{ route('water.form')}}"><button  class="btn btn-primary btn-block" ><h3>Calibration Checks</h3></button></a>
 		</div>
 		<div class="col-lg-3">
-			<a href="{{ route('cali.form')}}"><button  class="btn btn-primary btn-block" ><h3>Scale Calibration</h3></button></a>
+			<!-- <a href="{{ route('cali.form')}}"><button  class="btn btn-primary btn-block" ><h3>Scale Calibration</h3></button></a> -->
 		</div>
 		<div class="col-lg-3">
 			

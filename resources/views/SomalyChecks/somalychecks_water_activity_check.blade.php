@@ -13,9 +13,10 @@
 
 
 
-			<h2>Water Activity Check</h2>
-			<h4>{{$today->format('l')}} <span> {{$today->format('d-m-Y')}}</span></h4>
-
+			<h2>Daily Calibration Checks  : {{$today->format('l')}} <span> {{$today->format('d-m-Y')}}</span></h2>
+			<!-- <h4>{{$today->format('l')}} <span> {{$today->format('d-m-Y')}}</span></h4> -->
+			<hr />
+	<h3>Water Activity Check</h3>
 			<table class="table">
 				<thead>
 					<tr>
@@ -58,7 +59,7 @@
 
 
 
-	<form method="POST" enctype="multipart/form-data" action="{!! route('water.store')!!}">	{{csrf_field()}}
+	<form method="POST" class="pb-5" enctype="multipart/form-data" action="{!! route('water.store')!!}">	{{csrf_field()}}
 	<div class="row fluid ">
 
 
@@ -108,9 +109,79 @@
 	<button type="submit" class="btn btn-primary float-right">Submit</button>
 </form>
 
+<!--SCALE CALIBRATION-->
+<hr />
+<h3>Scale Calibration</h3>
+@if($count == "0") 
+<div class="col-12">
+
+	<form method="POST" enctype="multipart/form-data" action="{!! route('cali.store')!!}">	{{csrf_field()}}
+
+	
+			   @foreach ($errors->all() as $message)
+			   	<div class="alert alert-danger">
+                <li>{{ $message }}</li>
+                 </div>
+                @endforeach
+           
+
+	<table class="table table-sm table-bordered">
+               				<thead class="thead-light">
+               				<tr>
+               					
+               					<th>Date</th>
+               					<th>Scale Weight (100g)</th>
+               				
+               				</tr>
+               			</thead>
+               			<tbody>
+
+               				<tr>
+               					<td>
+               						<input name="dt[]" readonly class="form-control" value="{{$today_no_time}}">
+
+               					</td>
+               					<td>
+               							<input name="sw[]" class="form-control">
+               					</td>
+              
+               				</tr>
+               		<!-- 		<tr>
+               					<td>
+               						<input name="dt[]"readonly class="form-control"  value="{{$today_no_time}}">
+               					</td>
+               					<td>
+               							<input name="sw[]"class="form-control">
+               					</td>
+              
+               				</tr> -->
+               				
+               				
+               			</tbody>
+               		</table>
+
+	</div>
+
+	<div class="row">
+	
+			<div class=" col-md-4">
+				<h5>Verified by: {{ Auth::user()->name }}</h5>
+			</div>
+
+	</div>
+	<div class="row">
+			<div class=" col-md-4">
+				<h5>Date/Time: {{$today}}</h5>
+			</div>
+	
+	</div>
+<button type="submit" class="btn btn-primary float-right">Submit</button>
+</form>
+
+@endif
 
 
-	@section('somalyjs_water')
+@section('somalyjs_water')
 <script src="/js/somaly_watercheck.js"></script>
 @endsection
 @endsection

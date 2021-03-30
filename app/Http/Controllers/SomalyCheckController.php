@@ -304,6 +304,15 @@ class SomalyCheckController extends Controller
         $get5 = \App\water_activity::where('day',$today_no_time)->where('test_type','0.500')->get();
         $get7 = \App\water_activity::where('day',$today_no_time)->where('test_type','0.760')->get();
 
+        $getall = \App\scale_calibration::where('date',$today_no_time)->get();
+        $count = $getall->count();
+
+         if($count > 0)
+        {
+        return view('SomalyChecks/somalychecks_water_activity_check')->with(compact('today','today_no_time','count','get5','get7'))->with('message','Scale calibration finished today');
+        }
+        return view('SomalyChecks/somalychecks_water_activity_check', compact('today','today_no_time','count','get5','get7'));
+
         // $count = $getall->count();
 
         // if($count){
@@ -329,7 +338,7 @@ class SomalyCheckController extends Controller
   
         // }
         
-        return view('SomalyChecks/somalychecks_water_activity_check',compact('today','get5','get7'));
+       // return view('SomalyChecks/somalychecks_water_activity_check',compact('today','get5','get7'));
     }
 
     public function water_activity_store(Request $request)
@@ -458,7 +467,7 @@ class SomalyCheckController extends Controller
 
 
     // return view('SomalyChecks/somalychecks_home');
- return back()->with(compact('rms','documentVersion'));
+ return back();
 
     }
 
@@ -473,9 +482,8 @@ class SomalyCheckController extends Controller
 
          if($count > 0)
         {
-             return view('SomalyChecks/somalychecks_scale_calibration')->with(compact('today','today_notime','count'))->with('message','Scale calibration finished today');
+        return view('SomalyChecks/somalychecks_scale_calibration')->with(compact('today','today_notime','count'))->with('message','Scale calibration finished today');
         }
-
         return view('SomalyChecks/somalychecks_scale_calibration', compact('today','today_notime','count'));
     }
 
