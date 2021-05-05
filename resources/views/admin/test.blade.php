@@ -3,13 +3,7 @@
 
 <div class="container">
 
-
-
-	
-
-
-
-
+asd
 	<div class="row">
 
      <main role="main" class="col-md-12 col-lg-12 px-md-4">
