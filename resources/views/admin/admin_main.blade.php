@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card ">
-                <div class="card-header">New SKU Admin Page</div>
+                <div class="card-header">New SKU</div>
 
                 <div class="card-body shadow-sm">
                     @if (session('status'))
@@ -19,8 +19,8 @@
 
  					<div class="row">
 	 					<div class="col-md-10">
-	 						<h5>Add new SKU</h5>
-	 						<hr />
+	 						
+	 						
 	 						<form method="POST" action="{{ url('/') }}/adminpage">
 	 							{{csrf_field()}}
 
@@ -58,6 +58,7 @@
 	 										<option value="bumperbars">Bumper Bar</option>
 	 										<option value="preweigh">Pre-Weigh</option>
 	 										<option value="RM">Raw Material</option>
+											 <option value="QC">QC Checks</option>
 	 									</select>
 	 								</div>
 	 								
@@ -71,8 +72,8 @@
 	 							</div>
 
 
-
-
+<hr />
+	<div class="alert alert-info">For Process Checks Only</div>
 	 							<h5>Individual</h5>
 	 							<div class="form-group row">
 	 								<label for="" class="col-sm-2 col-form-label col-form-label-sm"> Min - Max</label>

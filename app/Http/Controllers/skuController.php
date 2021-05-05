@@ -56,18 +56,30 @@ class skuController extends Controller
             return redirect()->back()->with('error','SKU already exists');
         }
         else{
-        \App\Sku::create([
-            'Code' => $request->get('sc'),
-            'Description' => $request->get('desc'),
-            'target_range_ind_min' => $request->get('imin'),
-            'target_range_ind_max' => $request->get('imax'),
-            'target_range_row_min' => $request->get('rmin'),
-            'target_range_row_max' => $request->get('rmax'),
-            'product_type' => $request->get('pt'),
-            'supplier' => $request->get('sup'),
 
+            if($type === "QC")
+            {
+                    \App\Sku::create([
+                    'Code' => $request->get('sc'),
+                    'Description' => $request->get('desc'),
+                    'product_type' => 'TBC',
+                    'product_sub_type' => 'pouch',
+                    ]);
 
-        ]);
+            }
+            else
+            {
+                \App\Sku::create([
+                'Code' => $request->get('sc'),
+                'Description' => $request->get('desc'),
+                'target_range_ind_min' => $request->get('imin'),
+                'target_range_ind_max' => $request->get('imax'),
+                'target_range_row_min' => $request->get('rmin'),
+                'target_range_row_max' => $request->get('rmax'),
+                'product_type' => $request->get('pt'),
+                'supplier' => $request->get('sup'),
+                ]);
+            }
         return redirect()->back()->with('message','sku has been added !');
         }
 

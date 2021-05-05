@@ -29,7 +29,7 @@ class SomalyCheckController extends Controller
     {
          $selected_sku = $request->p_selected;
 
-         $details = \App\Sku::whereIn('product_type',['T','VFFS','C1','C2','C3'])
+         $details = \App\Sku::whereIn('product_type',['T','VFFS','C1','C2','C3','TBC'])
          ->where('id', $selected_sku)
          ->get();
 

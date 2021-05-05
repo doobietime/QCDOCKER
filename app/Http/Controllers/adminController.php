@@ -100,7 +100,7 @@ class adminController extends Controller
     public function testDashboard()
     {
         $skus = \App\Sku::where('product_sub_type', 'pouch')
-        ->whereIn('product_type',['T','VFFS','C1','C2','C3'])
+        ->whereIn('product_type',['T','VFFS','C1','C2','C3','TBC'])
         ->get();
        
         return view('admin/test', compact('skus'));

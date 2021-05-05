@@ -4,7 +4,7 @@
 <div class="container">
 
 
-<nav class="nav nav-pills flex-column flex-sm-row">
+<!-- <nav class="nav nav-pills flex-column flex-sm-row">
 	<a class="flex-sm-fill text-sm-center nav-link my-auto active mr-3" href=" {{url('IGCheck/create')}}">New Check</a>
 
 		<a class="flex-sm-fill text-sm-center nav-link my-auto active" >Export Offline Form</a>
@@ -12,11 +12,11 @@
  <form class="form-inline float-right" method="GET" action="{{ route('IGCheck.index')}}">
 	<a class="flex-sm-fill text-sm-center nav-link "><input value="" name="q" class="form-control mr-2" type="search" placeholder="Search Name or Code">	<a class="flex-sm text-sm-center nav-link my-auto active mr-3" href=" {{url('IGCheck/create')}}">X</a></a></form>
 
-</nav>
+</nav> -->
 
-<div class="row-fluid alert-info">
+<!-- <div class="row-fluid alert-info">
 	fda
-	</div>
+	</div> -->
 	
 
 
@@ -50,7 +50,8 @@
 									@endif	
 
 
-      <h2>Pouch Machine SKUs</h2>
+      <h2>QC Checks SKUs</h2>
+	  <hr />
       <div>
 
 
@@ -65,7 +66,7 @@
 
 	<form method="POST" enctype="multipart/form-data" action="{!! route('somalysku.store')!!}">	{{csrf_field()}}
 	@method('PATCH')
-<input id="idbox" type="text" name="skuid">
+<input style="display:none;"id="idbox" type="text" name="skuid">
 <div class="row ">
 	<div class="col-md-4">
  		Code<input id="code" class="form-control" type="text" name="code">
