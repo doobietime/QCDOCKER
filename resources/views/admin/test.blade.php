@@ -3,7 +3,25 @@
 
 <div class="container">
 
-asd
+
+<!-- <nav class="nav nav-pills flex-column flex-sm-row">
+	<a class="flex-sm-fill text-sm-center nav-link my-auto active mr-3" href=" {{url('IGCheck/create')}}">New Check</a>
+
+		<a class="flex-sm-fill text-sm-center nav-link my-auto active" >Export Offline Form</a>
+	<a class="flex-sm-fill text-sm-center nav-link "></a>
+ <form class="form-inline float-right" method="GET" action="{{ route('IGCheck.index')}}">
+	<a class="flex-sm-fill text-sm-center nav-link "><input value="" name="q" class="form-control mr-2" type="search" placeholder="Search Name or Code">	<a class="flex-sm text-sm-center nav-link my-auto active mr-3" href=" {{url('IGCheck/create')}}">X</a></a></form>
+
+</nav> -->
+
+<!-- <div class="row-fluid alert-info">
+	fda
+	</div> -->
+	
+
+
+
+
 	<div class="row">
 
      <main role="main" class="col-md-12 col-lg-12 px-md-4">
