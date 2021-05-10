@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 
 class adminController extends Controller
@@ -227,6 +228,20 @@ class adminController extends Controller
 }
   // return view('admin/admin_inwards', compact('rms','documentVersion'));
     return back()->with(compact('rms','documentVersion'));
+    }
+
+    public function chartPage()
+    {
+        $calls = \App\pouchChecks::all()
+        ->where('created_at', Carbon::today())
+        ->groupBy('machineID');
+
+
+       dd($calls);
+
+
+        return view('admin/chart'); 
+
     }
 
     /**

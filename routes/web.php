@@ -30,6 +30,8 @@ Route::get('/processmenu', function () {
 Route::get('/dev02','adminController@ccpchecks');
 Route::post('/dev02_create','adminController@saveCcp')->name('ccp.store');
 
+Route::get('/dev03','adminController@chartpage');
+
 Route::get('ajaxRequest_getTestPieces', 'adminController@getTestPieces');
 
 Route::get('/dev01','adminController@testDashboard');
