@@ -28,7 +28,8 @@ class IGCheck extends Model
 		'rms_done_by',
 		'release_done_by',
 		'qa_notes',
-		'location'
+		'location',
+		'sentToAX'
 
 
 	];

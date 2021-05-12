@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" >
 
 <h3><strong>Inwards Goods</strong></h3>
 
@@ -17,7 +17,7 @@
     <a class="flex-sm-fill text-sm-center nav-link "></a>
 
  <form class="form-inline float-right" method="GET" action="{{ route('IGCheck.index')}}">
-  <a class="flex-sm-fill text-sm-center nav-link "><input value="" name="q" class="form-control mr-2" type="search" placeholder="Search Name or Code">  <a class="flex-sm text-sm-center nav-link my-auto active mr-3" href="{{url('IGCheck/')}}">X</a></a></form>
+  <a class="flex-sm-fill text-sm-center nav-link "><input value="" name="q" class="form-control mr-2" type="search" placeholder="Search Name or Code">  <a class="flex-sm text-sm-center nav-link my-auto active mr-3" href="{{url('IGCheck/')}}">Clear Filter</a></a></form>
 
 </nav>
 
@@ -42,6 +42,7 @@
       <th>IG Check ( {{$igcount}} / {{$allcount}} )</th>
       <th>RM Specification  ( {{$rmcount}} / {{$allcount}} )</th>
       <th>Release  ( {{$vercount}} / {{$allcount}} ) </th>
+      <th>Sent to AX</th>
      
     </tr>
   </thead>
@@ -51,13 +52,13 @@
       @foreach ($alligchecks as $igcheck)
 
 
-    <tr id="{{$igcheck->id}}">
-      <td>{{$igcheck->created_at}}
+   <tr id="{{$igcheck->id}}">
+   <td>{{$igcheck->created_at}}
         @if($igcheck->created_at->format('d-m-Y') == $today->format('d-m-Y'))
         <small> <span class="badge badge-danger">Today</span></small>
       @endif</td>
-      <td>{{$igcheck->item_code}}</td>
-      <td>{{$igcheck->item_name}}</td>
+      <td><strong>{{$igcheck->item_code}}</strong></td>
+      <td><strong>{{$igcheck->item_name}}</strong></td>
    <!--    <td>{{$igcheck->created_at}}</td> -->
 
       
@@ -71,10 +72,9 @@
     </small>
       @else(!empty($igcheck->completed))
        <small class="d-block mt-1">
-        <a><svg class="bi bi-file-check" width="2em" height="2em" viewBox="0 0 16 16" fill="green" xmlns="http://www.w3.org/2000/svg">
-  <path d="M9 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8h-1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h5V1z"/>
-  <path fill-rule="evenodd" d="M15.854 2.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 4.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-</svg></a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+</svg>
     <span class="badge badge-secondary">{{$igcheck->igs_done_by}}</span></small>
        
       @endif
@@ -90,10 +90,9 @@
      @elseif(!empty($igcheck->rms_completed))
    </small>
      <small class="d-block mt-1">
-        <a><svg class="bi bi-file-check" width="2em" height="2em" viewBox="0 0 16 16" fill="green" xmlns="http://www.w3.org/2000/svg">
-  <path d="M9 1H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V8h-1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h5V1z"/>
-  <path fill-rule="evenodd" d="M15.854 2.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 4.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-</svg></a>
+       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+</svg>
     <span class="badge badge-secondary">{{$igcheck->rms_done_by}}</span></small>
 
      @endif
@@ -124,6 +123,16 @@
      <span class="badge badge-secondary">{{$igcheck->release_done_by}}</span></small>
       @endif
     </td>
+
+<td>
+@if ($igcheck->sentToAX == 0)
+
+@else
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+</svg>
+@endif
+</td>
 
 @if (Auth::user()->is_admin == "1" )
 <td id="removeBtn"><svg  width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
