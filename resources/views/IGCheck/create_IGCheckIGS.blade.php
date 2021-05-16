@@ -235,7 +235,7 @@ $(".asdf").click(function(){
 			$(".batchTable > tbody:last-child").append('<tr class="doobie"><td><input required name="bcode[]" type="text" class="form-control"></td><td><input required name="bbd[]" type="text" class="form-control dtp" data-provide="datepicker"  data-date-autoclose="true"></td><td><input placeholder="required" required name="pqty[]" type="number" class="form-control"></td><td><input placeholder="required" required name="qty[]" type="number" class="form-control"></td><td><input required name="temp[]" type="text" class="form-control"></td></tr>');
 	
 			$(document).on("focus", ".dtp", function(){
-        	$(this).datepicker({ dateFormat: 'yyyy-mm-dd' });
+        	$(this).datepicker({ dateFormat: 'yy-mm-dd' });
     });
 
 });
