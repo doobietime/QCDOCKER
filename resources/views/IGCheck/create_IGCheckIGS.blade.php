@@ -237,8 +237,6 @@ $(".asdf").click(function(){
 });
 
 
-$('body').on('focus',".dtp", function(){
-    $(this).datepicker();});​
 
 
 </script>
