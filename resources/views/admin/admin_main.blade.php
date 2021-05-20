@@ -58,7 +58,7 @@
 	 										<option value="bumperbars">Bumper Bar</option>
 	 										<option value="preweigh">Pre-Weigh</option>
 	 										<option value="RM">Raw Material</option>
-											 <option value="QC">QC Checks</option>
+											 <option value="TBC">QC Checks</option>
 	 									</select>
 	 								</div>
 	 								

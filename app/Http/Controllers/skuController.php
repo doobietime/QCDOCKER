@@ -49,27 +49,22 @@ class skuController extends Controller
     {
         $getUser = \Auth::user()->name;
         $skuCode = $request->get('sc');
-        $find = \App\Sku::where('Code', $skuCode)->first();
         $type = $request->get('pt');
-
-        if($type != "RM" && $find !== null){
-            return redirect()->back()->with('error','SKU already exists');
+        $find = \App\Sku::where('Code', $skuCode)->where('product_type', $type)->count();
+   
+        if($type === "TBC" && $find == 0)
+        {
+            \App\Sku::create([
+                'Code' => $request->get('sc'),
+                'Description' => $request->get('desc'),
+                'product_type' => 'TBC',
+                'product_sub_type' => 'pouch',
+                ]);
+                return redirect()->back()->with('message','sku has been added !');
         }
-        else{
-
-            if($type === "QC")
-            {
-                    \App\Sku::create([
-                    'Code' => $request->get('sc'),
-                    'Description' => $request->get('desc'),
-                    'product_type' => 'TBC',
-                    'product_sub_type' => 'pouch',
-                    ]);
-
-            }
-            else
-            {
-                \App\Sku::create([
+        if($type === "RM" && $find == 0)
+        {
+            \App\Sku::create([
                 'Code' => $request->get('sc'),
                 'Description' => $request->get('desc'),
                 'target_range_ind_min' => $request->get('imin'),
@@ -79,9 +74,57 @@ class skuController extends Controller
                 'product_type' => $request->get('pt'),
                 'supplier' => $request->get('sup'),
                 ]);
-            }
-        return redirect()->back()->with('message','sku has been added !');
+
         }
+        if($type !=="RM" && $type !=="TBC" && $find == 0)
+        {
+            \App\Sku::create([
+                'Code' => $request->get('sc'),
+                'Description' => $request->get('desc'),
+                'target_range_ind_min' => $request->get('imin'),
+                'target_range_ind_max' => $request->get('imax'),
+                'target_range_row_min' => $request->get('rmin'),
+                'target_range_row_max' => $request->get('rmax'),
+                'product_type' => $request->get('pt'),
+                'supplier' => $request->get('sup'),
+                ]);
+
+        }
+        else
+        {
+            return redirect()->back()->with('error','SKU already exists');
+        }
+
+        // if($type != "RM" && $find !== null){
+        //     return redirect()->back()->with('error','SKU already exists');
+        // }
+        // else{
+
+        //     if($type === "QC")
+        //     {
+        //             \App\Sku::create([
+        //             'Code' => $request->get('sc'),
+        //             'Description' => $request->get('desc'),
+        //             'product_type' => 'TBC',
+        //             'product_sub_type' => 'pouch',
+        //             ]);
+
+        //     }
+        //     else
+        //     {
+        //         \App\Sku::create([
+        //         'Code' => $request->get('sc'),
+        //         'Description' => $request->get('desc'),
+        //         'target_range_ind_min' => $request->get('imin'),
+        //         'target_range_ind_max' => $request->get('imax'),
+        //         'target_range_row_min' => $request->get('rmin'),
+        //         'target_range_row_max' => $request->get('rmax'),
+        //         'product_type' => $request->get('pt'),
+        //         'supplier' => $request->get('sup'),
+        //         ]);
+        //     }
+        // return redirect()->back()->with('message','sku has been added !');
+        // }
 
 
 
