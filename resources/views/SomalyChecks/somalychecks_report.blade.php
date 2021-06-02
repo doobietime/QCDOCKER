@@ -19,10 +19,10 @@
 
 
 
-<table class="table table-bordered table-hover table-sm" style="font-size:12px">
+<table class="table table-bordered table-hover">
 
 	<thead class="thead-light">
-		<tr >
+		<tr style="font-size:10px;" >
 			<th>Date</th>
 			<th>Product</th>
 			<th>MO #</th>
@@ -35,12 +35,12 @@
 			<th>BBD Quality & Alignment</th>
 			<th>Carton Label</th>
 			
-			<th>Check 1</th>
-			<th>Check 2</th>
-			<th>Check 3</th>
-			<th>Check 4</th>
-			<th>Check 5</th>
-			<th>Average</th>
+			<th>C-1</th>
+			<th>C-2</th>
+			<th>C-3</th>
+			<th>C-4</th>
+			<th>C-5</th>
+			<th>Avg</th>
 			<th>Status</th>
 		</tr>
 	</thead>
@@ -49,8 +49,8 @@
 		@foreach($results as $result)
 
 		<tr>
-			<td>{{$result->created_at}}</td>
-			<td>{{$result->product_used_code}}</td>
+			<td >{{$result->created_at}}</td>
+			<td style="font-size:17px;"><strong>{{$result->product_used_code}}</strong></td>
 			<td>{{$result->mo_number}}</td>
 			<td>{{$result->film_part}}</td>
 			<td>{{$result->version}}</td>
@@ -98,7 +98,7 @@
 		
 
 
-				   <div class="modal fade" id="a{{$resultl->pouchCheck_id}}" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+<div class="modal fade" id="a{{$resultl->pouchCheck_id}}" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

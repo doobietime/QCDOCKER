@@ -189,7 +189,7 @@ class SomalyCheckController extends Controller
             ->with('pouchChecks_lines_weight')
             ->with('pouchChecks_retest')
             ->orderby('created_at','DESC')
-            ->paginate(15);
+            ->paginate(10);
         }
          if($contentType == "VFFS"){
             $results = \App\pouchChecks::where('machineID','VF')
@@ -197,7 +197,7 @@ class SomalyCheckController extends Controller
             ->with('pouchChecks_lines_weight')
             ->with('pouchChecks_retest')
             ->orderby('created_at','DESC')
-            ->paginate(15);
+            ->paginate(10);
             
         }
          if($contentType == "Cavanna"){
@@ -208,7 +208,7 @@ class SomalyCheckController extends Controller
             ->with('pouchChecks_lines_weight')
             ->with('pouchChecks_retest')
             ->orderby('created_at','DESC')
-            ->paginate(15);
+            ->paginate(10);
         }
 
 

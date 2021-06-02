@@ -591,7 +591,7 @@ return redirect()->action(
         $xml->writeAttribute('xmlns', 'http://schemas.microsoft.com/dynamics/2008/01/documents/WMSReceiptJournal_FUS');
        $xml->startElement('WMSJournalTable');
        $xml->writeAttribute('class','entity');
-       $xml->writeElement('Description','Sample Description');
+       $xml->writeElement('Description',$igcheck->item_name);
        $xml->writeElement('InventTransRefId',$igcheck->PO_number);
        $xml->writeElement('PackingSlip','Sample Packing Slip');
 
@@ -611,8 +611,8 @@ foreach($batches as $batch){
                         $xml->writeElement('InventBatchId',$batch->batch_code);
                         $xml->startElement('InventBatchTrans');
                         $xml->writeAttribute('class','entity');
-                        $xml->writeElement('ExpDate','2030-10-10');
-                        // $xml->writeElement('PdsBestBeforeDate',' ');
+                        // $xml->writeElement('ExpDate','2030-10-10');
+                        $xml->writeElement('PdsBestBeforeDate',$batch->best_before);
                         // $xml->writeElement('PdsShelfAdviceDate',' ');
                         // $xml->writeElement('ProdDate',' ');
                         $xml->endElement();
@@ -650,14 +650,24 @@ foreach($batches as $batch){
        $contents = $xml->outputMemory();
        $xml = null;
 
-       $fname = "QCIN".$id.".xml";
+       $fname = "ctqc_inwards_".$id."_".$igcheck->item_code.".xml";
 
        Storage::put($fname ,$contents);
 
        //FTP
 
        $local_file = Storage::get($fname);
-       Storage::disk('ftp')->put($fname,$local_file);
+       $send = Storage::disk('ftp')->put($fname,$local_file);
+       if($send)
+       {
+           $igcheck->sentToAX = "success";
+           $igcheck->save();
+       }
+       else
+       {
+           $igcheck->sentToAX = "Failed";
+           $igcheck->save();
+       }
 
        // echo $igcheck->item_code. "<br />";
        // echo $igcheck->item_name. "<br /><br />";
@@ -675,7 +685,7 @@ foreach($batches as $batch){
        
 
 
-        return view('/admin/ftp',compact('igcheck','batches'));
+       return redirect()->back();
 
     }
 }
