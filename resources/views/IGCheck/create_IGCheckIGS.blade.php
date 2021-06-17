@@ -57,12 +57,24 @@
 	               		<input type="text" class="form-control">
                		</div> -->
                		<div class="form-group col-md-5" >
-               				  <div class="input-group">
+<div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text"><strong>PO Number</strong></span>
   </div>
-  <input required name="ponumber" type="text" class="form-control">
-</div><br />
+  <input required name="ponumber" type="text" class="form-control">  
+</div>
+
+<br />
+
+<div class="input-group">
+<div class="input-group-prepend">
+    <span class="input-group-text"><strong>Packing Slip Number</strong></span>
+  </div>
+  <input required name="psnumber" type="text" class="form-control">
+</div>
+<br />
+
+
 <label>Location:</label>
  <select name="location" class="form-control">
  	

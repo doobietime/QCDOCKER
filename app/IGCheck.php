@@ -29,7 +29,8 @@ class IGCheck extends Model
 		'release_done_by',
 		'qa_notes',
 		'location',
-		'sentToAX'
+		'sentToAX',
+		'packing_slip'
 
 
 	];

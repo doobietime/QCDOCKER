@@ -42,6 +42,7 @@
   <h3>Item Code: 	{{$igchecks->item_code}}</h3>
                <h5>Item name: 	{{$igchecks->item_name}}</h5>
                 <h5>PO Number: 	{{$igchecks->PO_number}}</h5>
+				<h5>Packing Slip Number: 	{{$igchecks->packing_slip}}</h5>
                 <h5>Supplier: {{$igchecks->igcheck_supplier}}</h5>
                <h5>Created At: 	{{$igchecks->created_at}}</h5>
                <h5>Location: 	{{$igchecks->location}}</h5>

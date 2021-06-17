@@ -12,12 +12,13 @@
              
 <div class="">
          <!--    //  *show inwards goods inspection details - igchecks','parameters','getBatch// -->
-  <h3>Item: 	{{$igchecks->item_code}}</h3>
-               <h5>Description: 	{{$igchecks->item_name}}</h5>
-               <h5>Created at: 	{{$igchecks->created_at}}</h5>
-               <h5>Supplier: {{$igchecks->igcheck_supplier}}</h5>
+  			<h3>Item: 	{{$igchecks->item_code}}</h3>
+               <h5>Item Name: 	{{$igchecks->item_name}}</h5>    
                <h5>PO Number: 	{{$igchecks->PO_number}}</h5>
-               <h5>Location: 	{{$igchecks->location}}</h5>
+			   <h5>Packing Slip Number: 	{{$igchecks->packing_slip}}</h5>
+			   <h5>Supplier: {{$igchecks->igcheck_supplier}}</h5>
+			   <h5>Created at: 	{{$igchecks->created_at}}</h5>
+			   <h5>Location: 	{{$igchecks->location}}</h5>
 
              
            </div>

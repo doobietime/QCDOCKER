@@ -66,8 +66,8 @@ class IGCheckController extends Controller
         $getBatch = \App\Batch::where('foreign_key', $id)->get();
         $getVersion = \App\rmversions::where('RM_code','Global')->value('version');
 
-         
-        return view('IGCheck/create_IGCheckIGS',['igcheck' => $igchecks], compact('sku','getBatch','global_params','param_lines','getVersion'));
+    //removed compact 'sku'         
+        return view('IGCheck/create_IGCheckIGS',['igcheck' => $igchecks], compact('getBatch','global_params','param_lines','getVersion'));
 
 
     }
@@ -77,6 +77,7 @@ class IGCheckController extends Controller
         $getUser = \Auth::user()->name;
         $igcheck = \App\IGCheck::find($FKey);
         $igcheck->completed = "1";
+        $igcheck->packing_slip = $request->psnumber;
         $igcheck->location = $request->location;
         $igcheck->PO_number = $request->get('ponumber');
          $getUser = \Auth::user()->name;
@@ -593,7 +594,7 @@ return redirect()->action(
        $xml->writeAttribute('class','entity');
        $xml->writeElement('Description',$igcheck->item_name);
        $xml->writeElement('InventTransRefId',$igcheck->PO_number);
-       $xml->writeElement('PackingSlip','Sample Packing Slip');
+       $xml->writeElement('PackingSlip',$igcheck->packing_slip);
 
 foreach($batches as $batch){
 
@@ -650,7 +651,7 @@ foreach($batches as $batch){
        $contents = $xml->outputMemory();
        $xml = null;
 
-       $fname = "ctqc_inwards_".$id."_".$igcheck->item_code.".xml";
+       $fname = "ctqc_inwards_".$id.".xml";
 
        Storage::put($fname ,$contents);
 
@@ -658,6 +659,7 @@ foreach($batches as $batch){
 
        $local_file = Storage::get($fname);
        $send = Storage::disk('ftp')->put($fname,$local_file);
+
        if($send)
        {
            $igcheck->sentToAX = "success";
